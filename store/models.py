@@ -19,13 +19,13 @@ class Product(models.Model):
     promotions = models.ManyToManyField(Promotion)
 
 class Customer(models.Model):
-    MEMBERSHIP_STATUS_BRONZE = 'B',
-    MEMBERSHIP_STATUS_SILVER = 'S',
-    MEMBERSHIP_STATUS_PLATNUM = 'P'
+    MEMBERSHIP_BRONZE = 'B'
+    MEMBERSHIP_SILVER = 'S'
+    MEMBERSHIP_PLATNUM = 'P'
     MEMBERSHIP_CHOICES = [
-        (MEMBERSHIP_STATUS_BRONZE, 'Bronze'),
-        (MEMBERSHIP_STATUS_SILVER, 'Silver'),
-        (MEMBERSHIP_STATUS_PLATNUM, 'Gold'),
+        (MEMBERSHIP_BRONZE, 'Bronze'),
+        (MEMBERSHIP_SILVER, 'Silver'),
+        (MEMBERSHIP_PLATNUM, 'Gold')
     ]
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -33,7 +33,7 @@ class Customer(models.Model):
     phone = models.CharField(max_length=255)
     birth_day = models.DateField(null=True)
     membership = models.CharField(
-        max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_STATUS_BRONZE)
+        max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
 
 class Order(models.Model):
     PAYMENT_STATUS_PENDING = 'P'
